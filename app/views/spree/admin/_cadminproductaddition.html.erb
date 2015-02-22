@@ -1,0 +1,36 @@
+<div data-hook="admin_product_form_sku">
+          <%= f.field_container :sku, class: ['form-group'] do %>
+            <%= f.label :sku, Spree.t(:sku) %>
+            <%= f.text_field :sku, size: 16, class: 'form-control' %>
+          <% end %>
+        </div>
+
+<div data-hook="admin_product_form_barcode">
+            <%= f.field_container :barcode, class: ['form-group'] do %>
+            <%= f.label :barcode, Spree.t(:barcode) %>
+            <%= f.text_field :barcode, size: 16, class: 'form-control' %>
+          <% end %>
+</div>
+
+<div data-hook="admin_product_form_expireable">
+  <%= f.label :expireable, Spree.t(:expireable) %>
+  <%= f.select :expireable, [['None', nil], ['Yes', true], ['No', false]] %>
+</div>
+
+<div data-hook="admin_product_form_pestissue">
+  <%= f.label :pestissue, Spree.t(:pestissue) %>
+  <%= f.select :pestissue, [['None', nil], ['Yes', true], ['No', false]] %>
+</div>
+
+<div data-hook="admin_product_form_multiplebarcode">
+  <%= f.label :multiplebarcode, Spree.t(:multiplebarcode) %>
+  <%= f.select :multiplebarcode, [['None', nil], ['Yes', true], ['No', false]] %>
+</div>
+
+<div data-hook="admin_product_form_vendor">
+   <%= f.field_container :vendor_id, class: ['form-group'] do %>
+   <%= f.label "Vendor" %>
+   <%= f.collection_select(:vendor_id, Spree::Vendor.all, :id, :vendorname, { include_blank: Spree.t('match_choices.none') }, { class: 'select2', disabled: (cannot?               :edit, Spree::Vendor) }) %>
+   <%= f.error_message_on :vendor_id %>
+   <% end %>
+</div>
