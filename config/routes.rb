@@ -2,7 +2,7 @@ Spree::Core::Engine.routes.draw do
   
   namespace :admin do
     resources :vendors
-    get 'vendors/assignvendor', :to => 'vendors#assignvendor'
+    get 'assignvendor', :to => 'vendors#assignvendor'
 
   end
 
