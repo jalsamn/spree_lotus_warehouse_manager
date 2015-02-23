@@ -9,6 +9,10 @@ class VendorsController < Spree::Admin::BaseController
     @vendors = Spree::Vendor.all
   end
 
+  def assignvendor
+    @vars = Spree::Variant.where(vendor_id: nil)
+  end
+  
   # GET /spree/vendors/1
   def show
   end
