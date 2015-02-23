@@ -18,9 +18,7 @@
         <td><%= var.name %></td>
         <td><%= var.total_on_hand %></td>
 
-        <td><%= link_to 'Show', admin_vendor_path(vendor) %></td>
-        <td><%= link_to 'Edit', edit_admin_vendor_path(vendor) %></td>
-        <td><%= link_to 'Destroy', admin_vendor_path(vendor), confirm: 'Are you sure?', method: :delete %></td>
+        <td>   <%= collection_select(:vendor_id, Spree::Vendor.all, :id, :vendorname, { include_blank: Spree.t('match_choices.none') }, { class: 'select2', disabled: (cannot?               :edit, Spree::Vendor) }) %></td>
       </tr>
     <% end %>
   </tbody>
