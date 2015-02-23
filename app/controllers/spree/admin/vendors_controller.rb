@@ -13,6 +13,10 @@ class VendorsController < Spree::Admin::BaseController
     @vars = Spree::Variant.where(vendor_id: nil)
   end
   
+  def updatevendor
+    
+  end
+  
   # GET /spree/vendors/1
   def show
   end

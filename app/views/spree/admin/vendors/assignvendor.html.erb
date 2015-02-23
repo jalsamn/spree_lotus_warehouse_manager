@@ -6,6 +6,7 @@
       <th>Barcode</th>
       <th>Product Name</th>
       <th>InStock</th>
+      <th>Assign Vendor</th>
 
       <th colspan="3"></th>
     </tr>
@@ -17,6 +18,14 @@
         <td><%= var.barcode %></td>
         <td><%= var.name %></td>
         <td><%= var.total_on_hand %></td>
+        <td>
+          <%= form_tag(admin_product_variant , method: "put", remote: true, class: "table_form") do %>
+          <label>
+            <%= collection_select(:var, :vendor_id, Spree::Vendor.all, :id, :vendorname, prompt: true) %>
+            <%= submit_tag "updatevendor", class: "btn btn-mini" %>
+          </label>
+        <% end %>
+        </td>
 
       </tr>
     <% end %>
