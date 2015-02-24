@@ -1,0 +1,29 @@
+<h1>Listing Vendors</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Created Date</th>
+      <th>Vendor</th>
+      <th>Received?</th>
+      <th>Active?</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @purchase_orders.each do |purchaseorder| %>
+      <tr>
+        <td><%= purchaseorder.created_at %></td>
+        <td><%= purchaseorder.vendor_id %></td>
+        <td><%= purchaseorder.received %></td>
+        <td><%= purchaseorder.active %></td>
+        <td><%= link_to 'Destroy', admin_purchase_order_path(purchaseorder), confirm: 'Are you sure?', method: :delete %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Vendor', new_admin_purchase_order_path %>

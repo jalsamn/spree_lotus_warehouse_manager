@@ -1,0 +1,35 @@
+<h1>Listing Products for Vendor</h1>
+<%= form_tag admin_update_individual_products_path :method => :post do %>  
+
+<table>
+  <thead>
+    <tr>
+      <th>PO ID</th>
+      <th>Barcode</th>
+      <th>Name</th>
+      <th>Inventory</th>
+      <th>Quantity</th>
+      <th>Quantity Type</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @vars.each.with_index do |var| %>
+      <tr>
+        <%= hidden_field_tag "poid", @purchase_order.id %>
+        <%= hidden_field_tag "purchase_order_item[][purchase_order_id]", @purchase_order.id %>
+        <%= hidden_field_tag "purchase_order_item[][product_id]", var.id %>
+        <td><%= @purchase_order.id %></td>
+        <td><%= var.barcode %></td>
+        <td><%= var.name %></td>
+        <td><%= var.total_on_hand %></td>
+        <td><%= text_field_tag "purchase_order_item[][quantity]" %></td>
+        <td><%= text_field_tag "purchase_order_item[][quantitytype]" %></td>
+     
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<br>
+<p><%= submit_tag "Submit" %></p>  
+<% end %>

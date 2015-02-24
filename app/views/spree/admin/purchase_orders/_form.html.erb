@@ -1,0 +1,23 @@
+<%= form_for(@purchase_order, url: admin_purchase_orders_path) do |f| %>
+  <% if @purchase_order.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@purchase_order.errors.count, "error") %> prohibited this vendor from being saved:</h2>
+
+      <ul>
+      <% @purchase_order.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+        <%= f.label "Vendor" %>
+        <%= f.collection_select(:vendor_id, Spree::Vendor.all, :id, :vendorname, { include_blank: Spree.t('match_choices.none') }, { class: 'select2', disabled: (cannot?               :edit, Spree::Vendor) }) %>
+  </div>
+
+  
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

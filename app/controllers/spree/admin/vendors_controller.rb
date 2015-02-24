@@ -14,7 +14,16 @@ class VendorsController < Spree::Admin::BaseController
   end
   
   def updatevendor
-    
+    @v = Spree::Variant.find_by_id(params[:variant_id])
+    @v.vendor_id = params[:vendor_id]
+    respond_to do |format|
+        if @v.save
+          format.html { redirect_to admin_assignvendor_path, notice: 'Updated' }
+           # format.js
+        else
+            format.html { render action: "updatevendor" }
+        end
+    end
   end
   
   # GET /spree/vendors/1

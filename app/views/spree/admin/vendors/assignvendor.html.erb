@@ -19,9 +19,10 @@
         <td><%= var.name %></td>
         <td><%= var.total_on_hand %></td>
         <td>
-          <%= form_tag(admin_product_variant , method: "put", remote: true, class: "table_form") do %>
+          <%= form_tag(admin_update_vendor_path, remote: true, method: "get", class: "table_form") do %>
+          <%= hidden_field_tag("variant_id", value = var.id) %>
           <label>
-            <%= collection_select(:var, :vendor_id, Spree::Vendor.all, :id, :vendorname, prompt: true) %>
+            <%= select_tag 'vendor_id', options_for_select(Spree::Vendor.all.collect{ |u| [u.vendorname, u.id] }), :prompt => "Please select" %>
             <%= submit_tag "updatevendor", class: "btn btn-mini" %>
           </label>
         <% end %>
