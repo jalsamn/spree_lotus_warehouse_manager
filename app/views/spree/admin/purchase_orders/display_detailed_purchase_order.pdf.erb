@@ -1,0 +1,96 @@
+<% if params[:format] && params[:format] == 'pdf' %>
+  <%= wicked_pdf_stylesheet_link_tag 'application' %>
+<% else %>
+  <%= stylesheet_link_tag 'application' %>
+<% end %>
+
+<style>
+  html, body {
+    width: 100%;
+}
+
+/* Tables */
+.Table-Normal {
+    position: relative;
+    //display: block;
+    margin: 10px auto;
+    padding: 0;
+    width: 100%;
+    height: auto;
+    border-collapse: collapse;
+    text-align: center;
+}
+
+.Table-Normal thead tr {
+    background-color: #E74C3C;
+    font-weight: bold;
+}
+
+.Table-Normal tr {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    border: 1px solid #999;
+    width: 100%;
+}
+
+.Table-Normal tr td {
+    margin: 0;
+    padding: 4px 8px;
+    border: 0;
+    border: 1px solid #999;
+    
+}
+
+.Table-Normal tbody tr:nth-child(2) {
+    background-color: #EEE;
+}
+
+
+/* Tables */
+</style>
+
+<h4>Purchase Order Details for PO: <%= @purchase_order.id %></h4>
+<h4>Date Created: <%= @purchase_order.created_at.to_formatted_s(:long_ordinal) %></h4>
+
+<table id="top-leader" class="Table-Normal">
+  <thead>
+    <th align="left">Purchaser</th>
+    <th align="left">Supplier</th>
+    </thead>
+  <tbody>
+    <td align="left">
+      Lotus Market <br>
+      2043, S Alma School Rd <br>
+      Mesa, AZ, 85210 <br>
+      602-666-6177 <br>
+    </td>
+    <td align="left">
+      <%= @vendor.vendorname %><br><br><br><br>
+      
+    </td>
+   </tbody>
+</table>
+
+<table id="top-leader" class="Table-Normal">
+                <thead>
+                    <tr>
+                        <th>Product</th>
+                        <th>Barcode</th>
+                        <th>Quantity</th>
+                        <th>QuantityType</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% @purchase_order_items.each do |purchaseorderitem| %>
+                    <tr>
+                      <% @variant = Spree::Variant.find(purchaseorderitem.product_id)  %>
+                      <td><%= @variant.name %></td>
+                      <td><%= @variant.barcode %></td>
+                      <td><%= purchaseorderitem.quantity %></td>
+                      <td><%= purchaseorderitem.quantitytype %></td>
+
+                    </tr>
+                  <% end %>
+                </tbody>
+</table>

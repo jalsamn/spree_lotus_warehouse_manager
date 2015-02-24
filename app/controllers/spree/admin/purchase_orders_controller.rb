@@ -52,7 +52,16 @@ class PurchaseOrdersController < Spree::Admin::BaseController
   
   def display_detailed_purchase_order
       @purchase_order = Spree::PurchaseOrder.find(params[:purchase_order_id])  
+      @vendor = Spree::Vendor.find(@purchase_order.vendor_id)  
       @purchase_order_items = @purchase_order.purchase_order_items
+    
+      respond_to do |format|
+        format.html
+        format.pdf do
+          render :pdf => "PurchaseOrder"
+         end
+  end
+    
   end
 
 

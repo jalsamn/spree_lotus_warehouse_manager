@@ -1,5 +1,7 @@
-<h1>Listing Vendors</h1>
-
+<h1>Listing Purchase Order</h1> <br>
+<%= button_to "New Purchase Order", new_admin_purchase_order_path, :id => "open-contacts-dialog-btn",
+      :class => "inbox-sf-add-btn tip", :method => :get %>
+<br>
 <table>
   <thead>
     <tr>
@@ -15,9 +17,13 @@
     <% @purchase_orders.each do |purchaseorder| %>
       <tr>
         <td><%= purchaseorder.created_at %></td>
-        <td><%= purchaseorder.vendor_id %></td>
+        <td><%= begin Spree::Vendor.find(purchaseorder.vendor_id).vendorname 
+                rescue
+                end%></td>
         <td><%= purchaseorder.received %></td>
         <td><%= purchaseorder.active %></td>
+        <td><%= link_to 'Show', admin_display_detailed_purchase_order_path(:purchase_order_id => purchaseorder.id), confirm: 'Are you sure?', method: :get %></td>
+        <td><%= link_to 'PDF', admin_display_detailed_purchase_order_path(:purchase_order_id => purchaseorder.id, :format => 'pdf'), confirm: 'Are you sure?', method: :get %></td>
         <td><%= link_to 'Destroy', admin_purchase_order_path(purchaseorder), confirm: 'Are you sure?', method: :delete %></td>
       </tr>
     <% end %>
@@ -26,4 +32,5 @@
 
 <br>
 
-<%= link_to 'New Vendor', new_admin_purchase_order_path %>
+<%= button_to "New Purchase Order", new_admin_purchase_order_path, :id => "open-contacts-dialog-btn",
+      :class => "inbox-sf-add-btn tip", :method => :get %>

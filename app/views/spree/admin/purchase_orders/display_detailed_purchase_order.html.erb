@@ -1,9 +1,11 @@
-<h1>Purchase Order Details</h1>
+<h1>Purchase Order Details for PO: <%= @purchase_order.id %></h1>
+<h3> Vendor: <%= @vendor.vendorname %> </h3>
 
 <table>
   <thead>
     <tr>
       <th>Product</th>
+      <th>Barcode</th>
       <th>Quantity</th>
       <th>QuantityType</th>
     </tr>
@@ -12,13 +14,16 @@
   <tbody>
     <% @purchase_order_items.each do |purchaseorderitem| %>
       <tr>
-        <td><%= purchaseorderitem.product_id %></td>
+        <% @variant = Spree::Variant.find(purchaseorderitem.product_id)  %>
+        <td><%= @variant.name %></td>
+        <td><%= @variant.barcode %></td>
         <td><%= purchaseorderitem.quantity %></td>
         <td><%= purchaseorderitem.quantitytype %></td>
-
       </tr>
     <% end %>
   </tbody>
 </table>
+
+<%= button_to "Printable PDF", admin_display_detailed_purchase_order_path, params: { :purchase_order_id => @purchase_order.id, :format => 'pdf' }, :id => "open-contacts-dialog-btn", :class => "inbox-sf-add-btn tip", :method => :get %>
 
 <br>
