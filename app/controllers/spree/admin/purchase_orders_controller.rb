@@ -16,14 +16,18 @@ class PurchaseOrdersController < Spree::Admin::BaseController
   end
   
   def listproducts
+    @vendor = Spree::Vendor.find(params[:vendor_id]) 
     @purchase_order = Spree::PurchaseOrder.find(params[:purchase_order_id])  
     @vars = Spree::Variant.all 
+    @sorted_vars = @vars.sort_by { |obj| obj.total_on_hand }
   end
 
   #Below code is too invoke view that will ask for which products to add to PO
   def add_individual_products
     @purchase_order = Spree::PurchaseOrder.find(params[:purchase_order_id])  
-    @vars = Spree::Variant.find(params[:var_ids])  
+    @vars = Spree::Variant.find(params[:var_ids])
+    
+
   end
   
     #Below code is too invoke view that will ask for quantity for products to update to PO
@@ -79,7 +83,7 @@ class PurchaseOrdersController < Spree::Admin::BaseController
     @purchase_order = Spree::PurchaseOrder.new(purchase_order_params)
 
     if @purchase_order.save
-      redirect_to :action => "listproducts", :purchase_order_id=> @purchase_order.id
+      redirect_to :action => "listproducts", :purchase_order_id => @purchase_order.id, :vendor_id => @purchase_order.vendor_id
 
       #redirect_to admin_listproducts_url, notice: 'Purchase Order was successfully created.'
     else

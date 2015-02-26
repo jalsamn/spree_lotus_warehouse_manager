@@ -24,7 +24,7 @@
         <td><%= var.name %></td>
         <td><%= var.total_on_hand %></td>
         <td><%= text_field_tag "purchase_order_item[][quantity]" %></td>
-        <td><%= text_field_tag "purchase_order_item[][quantitytype]" %></td>
+        <td><%= select_tag("purchase_order_item[][quantitytype]", "<option>Case</option><option>Unit</option>", include_blank: true) %></td>
      
       </tr>
     <% end %>

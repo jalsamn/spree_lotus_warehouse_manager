@@ -1,4 +1,4 @@
-<h1>Listing Products for Vendor%></h1>
+<h1>Listing Products for <%= @vendor.vendorname %></h1>
 
 <%= form_tag admin_add_individual_products_path do %>  
 <table>
@@ -12,7 +12,7 @@
   </thead>
 
   <tbody>
-    <% for var in @vars %>
+    <% for var in @sorted_vars %>
       <tr>
         <%= hidden_field_tag 'purchase_order_id', @purchase_order.id %>
         <td><%= var.barcode %></td>

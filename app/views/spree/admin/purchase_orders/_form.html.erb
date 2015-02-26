@@ -12,7 +12,7 @@
   <% end %>
 
   <div class="field">
-        <%= f.label "Vendor" %>
+    <%= f.label "Please Select a Vendor" %> <br>
         <%= f.collection_select(:vendor_id, Spree::Vendor.all, :id, :vendorname, { include_blank: Spree.t('match_choices.none') }, { class: 'select2', disabled: (cannot?               :edit, Spree::Vendor) }) %>
   </div>
 
