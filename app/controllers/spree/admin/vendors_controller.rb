@@ -10,7 +10,8 @@ class VendorsController < Spree::Admin::BaseController
   end
 
   def assignvendor
-    @vars = Spree::Variant.where(vendor_id: nil)
+   # @vars = Spree::Variant.where(vendor_id: nil)
+    @vars = Spree::Variant.where(vendor_id: nil).order(:name).page params[:page]
   end
   
   def updatevendor
