@@ -13,8 +13,9 @@
   </thead>
 
   <tbody>
+    <div id="withoutvendor_products">
     <% @vars.each do |var| %>
-      <tr>
+      <tr id="variant_<%= var.id %>">
         <td><%= var.barcode %></td>
         <td><%= var.name %></td>
         <td><%= var.total_on_hand %></td>
@@ -30,6 +31,7 @@
 
       </tr>
     <% end %>
+    </div>
   </tbody>
 </table>
 Pagination below: <br>

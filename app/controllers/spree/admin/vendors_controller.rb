@@ -12,6 +12,10 @@ class VendorsController < Spree::Admin::BaseController
   def assignvendor
    # @vars = Spree::Variant.where(vendor_id: nil)
     @vars = Spree::Variant.where(vendor_id: nil).order(:barcode).page params[:page]
+    respond_to do |format|
+     # format.html { redirect_to tasks_url }
+      
+    end
   end
   
   def updatevendor
@@ -20,7 +24,7 @@ class VendorsController < Spree::Admin::BaseController
     respond_to do |format|
         if @v.save
           format.html { redirect_to admin_assignvendor_path, notice: 'Updated' }
-           # format.js
+           format.js
         else
             format.html { render action: "updatevendor" }
         end
