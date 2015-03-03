@@ -18,8 +18,8 @@ class PurchaseOrdersController < Spree::Admin::BaseController
   def listproducts
     @vendor = Spree::Vendor.find(params[:vendor_id]) 
     @purchase_order = Spree::PurchaseOrder.find(params[:purchase_order_id])  
-    @vars = Spree::Variant.all 
-    @sorted_vars = @vars.sort_by { |obj| obj.total_on_hand }
+    @sorted_vars = Spree::Variant.where(vendor_id: @vendor.id).order(:barcode).page params[:page]  
+  #  @sorted_vars = @vars.order(:total_on_hand).page params[:page]  
   end
 
   #Below code is too invoke view that will ask for which products to add to PO
