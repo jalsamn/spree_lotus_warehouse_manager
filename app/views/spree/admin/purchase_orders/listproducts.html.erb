@@ -19,7 +19,8 @@
         <td><%= var.barcode %></td>
         <td><%= var.name %></td>
         <td><%= var.total_on_hand %></td>
-        <td id="variant_chk" data-message="Hello from UJS"><%= check_box_tag "var_ids[]", var.id, onclick="alert('Hello world!'); return false;" %> </td>
+        <td id="variant_chk" data-message="Hello from UJS"><%= check_box_tag "var_ids[]", var.id %>
+          <%= check_box_tag("var_ids[]", var.id, false, :onclick=>"addProduct(#{var.id});")%></td>
       </tr>
     
     <% end %>
