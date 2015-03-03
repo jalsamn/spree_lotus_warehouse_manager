@@ -18,7 +18,7 @@ class PurchaseOrdersController < Spree::Admin::BaseController
   def listproducts
     @vendor = Spree::Vendor.find(params[:vendor_id]) 
     @purchase_order = Spree::PurchaseOrder.find(params[:purchase_order_id])  
-    @sorted_vars = Spree::Variant.where(vendor_id: @vendor.id).order(:barcode).page params[:page]  
+    @sorted_vars = Spree::Variant.where(vendor_id: @vendor.id).order(:total_on_hand)
   #  @sorted_vars = @vars.order(:total_on_hand).page params[:page]  
   end
 
