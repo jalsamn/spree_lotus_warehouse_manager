@@ -21,6 +21,11 @@
         <td><%= var.total_on_hand %></td>
         <td id="variant_<%= var.id %>"><%= check_box_tag "var_ids[]", var.id %> </td>
       </tr>
+      <script>
+        $('#variant_<%= @var.id %>').bind('click', function() {
+            alert('Unobtrusive!');
+        }
+      </script>
     <% end %>
   </tbody>
 </table>
@@ -28,8 +33,3 @@
 <br>
 <% end %>  
 
-<script>
-$('#variant_<%= @sorted_vars.id %>').bind('click', function() {
-    alert('Unobtrusive!');
-}
-</script>
