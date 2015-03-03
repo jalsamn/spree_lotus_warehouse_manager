@@ -19,10 +19,10 @@
         <td><%= var.barcode %></td>
         <td><%= var.name %></td>
         <td><%= var.total_on_hand %></td>
-        <td id="variant_<%= var.id %>"><%= check_box_tag "var_ids[]", var.id %> </td>
+        <td id="variant_"><%= check_box_tag "var_ids[]", var.id %> </td>
       </tr>
       <script>
-        $('#variant_<%= @var.id %>').bind('click', function() {
+        $('#variant_').bind('click', function() {
             alert('Unobtrusive!');
         }
       </script>
