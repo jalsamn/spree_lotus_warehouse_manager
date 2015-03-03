@@ -3,5 +3,5 @@
 
 function addProduct(varid)
 {
-       alert("Hello");
+       alert("Hello" + varid);
 }
