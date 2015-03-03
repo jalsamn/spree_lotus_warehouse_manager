@@ -3,6 +3,12 @@
 
 function addProduct(cb, varid)
 {
+  if(cb.checked){
+    alert("Changed, new value true");
+  }
+  else{
+      
+  }
       // alert("Hello" + varid);
-    alert("Changed, new value = " + cb.checked);
+    alert("Changed, new value false");
 }
