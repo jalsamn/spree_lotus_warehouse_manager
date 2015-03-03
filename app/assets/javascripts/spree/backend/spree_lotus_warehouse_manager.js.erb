@@ -4,10 +4,12 @@
 function addProduct(cb, varid)
 {
   if(cb.checked){
-    alert("Changed, new value true");
+  <%= @var = Spree::Variant.find(varid) %>
+  varname = <%= @var.name %>
+  alert("Variant is " + varname);
   }
   else{
      alert("Changed, new value false");
   }
-      // alert("Hello" + varid);
+     
 }
