@@ -20,7 +20,7 @@
         <td><%= var.name %></td>
         <td><%= var.total_on_hand %></td>
         <td>
-          <%= check_box_tag("var_ids[]", var.id, false, :onclick=>"addProduct(#{var.id});")%></td>
+          <%= check_box_tag("var_ids[]", var.id, false, :onchange=>"addProduct(this, #{var.id});")%></td>
       </tr>
     
     <% end %>
