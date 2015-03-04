@@ -26,7 +26,7 @@
 
   <tbody>
     <% for var in @sorted_vars %>
-      <tr>
+      <tr  id="variant_<%= var.id %>">
         <%= hidden_field_tag 'purchase_order_id', @purchase_order.id %>
         <td><%= var.barcode %></td>
         <td><%= var.name %></td>

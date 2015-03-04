@@ -24,7 +24,17 @@ class PurchaseOrdersController < Spree::Admin::BaseController
   
   def add_individual_products_1
     @tpoi = Spree::TempPoItem.new
-    @topi.po_id = 
+    @topi.po_id = params[:po_id]
+    @topi.variant_id = params[:variant_id]
+    
+    respond_to do |format|
+        if @tpoi.save
+         # format.html { redirect_to admin_assignvendor_path, notice: 'Updated' }
+          format.js
+        else
+            format.html { render action: "listproducts" }
+        end
+    end
   end
 
   #Below code is too invoke view that will ask for which products to add to PO
