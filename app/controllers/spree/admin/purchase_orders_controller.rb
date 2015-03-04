@@ -23,7 +23,7 @@ class PurchaseOrdersController < Spree::Admin::BaseController
   #  @sorted_vars = @vars.order(:total_on_hand).page params[:page]  
   end
   
-  def add_individual_products_1
+  def add_individual_products_a
     @tpoi = Spree::TempPo.first
     @tpoi.po_id = params[:po_id]
     @tpoi.var_id = params[:variant_id]
