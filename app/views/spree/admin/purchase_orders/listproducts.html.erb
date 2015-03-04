@@ -2,7 +2,9 @@
   function addProduct(cb, varid)
 {
   if(cb.checked){
-    alert("Changed, new value true and Var is " + varid);
+    //alert("Changed, new value true and Var is " + varid);
+    <%= @var = Spree::Variant.first %>
+      alert("Changed, new value true and Var is " + <%= @var.name %>);
   }
   else{
      alert("Changed, new value false");
