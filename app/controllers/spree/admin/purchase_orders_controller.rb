@@ -45,7 +45,7 @@ class PurchaseOrdersController < Spree::Admin::BaseController
     
     #Delete Code Below
     @purchase_order = Spree::PurchaseOrder.find(params[:purchase_order_id])  
-    @vars = Spree::Variant.find(params[:var_ids])
+   # @vars = Spree::Variant.find(params[:var_ids])
     
 
   end
