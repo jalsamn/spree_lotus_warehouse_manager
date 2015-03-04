@@ -30,7 +30,7 @@ class PurchaseOrdersController < Spree::Admin::BaseController
     
     respond_to do |format|
         if @tpoi.save
-         # format.html { redirect_to admin_assignvendor_path, notice: 'Updated' }
+          format.html { redirect_to admin_listproducts_path, notice: 'Updated' }
           format.js
         else
             format.html { render action: "listproducts" }
