@@ -32,7 +32,7 @@
         <td><%= var.name %></td>
         <td><%= var.total_on_hand %></td>
        <td>
-          <%= form_tag(admin_add_individual_products_1_path, remote: true, class: "table_form") do %>
+          <%= form_tag(admin_add_individual_products_1_path, remote: true, method: "get", class: "table_form") do %>
           <%= hidden_field_tag("variant_id", value = var.id) %>
           <%= hidden_field_tag("po_id", value = @purchase_order.id) %>
           <label>
