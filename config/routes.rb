@@ -4,6 +4,7 @@ Spree::Core::Engine.routes.draw do
     resources :vendors
     get 'assignvendor', :to => 'vendors#assignvendor'
     get 'updatevendor', :to => 'vendors#updatevendor', :as => :update_vendor
+    post 'add_individual_products_1', :to => 'purchase_orders#add_individual_products_1'
     
     resources :purchase_orders
     get 'listproducts', :to => 'purchase_orders#listproducts'

@@ -23,7 +23,8 @@ class PurchaseOrdersController < Spree::Admin::BaseController
   end
   
   def add_individual_products_1
-    
+    @tpoi = Spree::TempPoItem.new
+    @topi.po_id = 
   end
 
   #Below code is too invoke view that will ask for which products to add to PO
