@@ -14,15 +14,16 @@
   </thead>
 
   <tbody>
-    <% @vars.each.with_index do |var| %>
+    <% @tpois.each.with_index do |var| %>
       <tr>
+        <%= @variant = Spree::Variant.find(var.var_id) %>
         <%= hidden_field_tag "poid", @purchase_order.id %>
         <%= hidden_field_tag "purchase_order_item[][purchase_order_id]", @purchase_order.id %>
-        <%= hidden_field_tag "purchase_order_item[][product_id]", var.id %>
+        <%= hidden_field_tag "purchase_order_item[][product_id]", @variant.id %>
         <td><%= @purchase_order.id %></td>
-        <td><%= var.barcode %></td>
-        <td><%= var.name %></td>
-        <td><%= var.total_on_hand %></td>
+        <td><%= @variant.barcode %></td>
+        <td><%= @variant.name %></td>
+        <td><%= @variant.total_on_hand %></td>
         <td><%= text_field_tag "purchase_order_item[][quantity]" %></td>
         <td><%= select_tag("purchase_order_item[][quantitytype]", "<option>Case</option><option>Unit</option>", include_blank: true) %></td>
      

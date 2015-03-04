@@ -40,6 +40,10 @@ class PurchaseOrdersController < Spree::Admin::BaseController
 
   #Below code is too invoke view that will ask for which products to add to PO
   def add_individual_products
+    
+    @tpois = Spree::TempPo.where(po_id: params[:purchase_order_id])
+    
+    #Delete Code Below
     @purchase_order = Spree::PurchaseOrder.find(params[:purchase_order_id])  
     @vars = Spree::Variant.find(params[:var_ids])
     
@@ -48,6 +52,8 @@ class PurchaseOrdersController < Spree::Admin::BaseController
   
     #Below code is too invoke view that will ask for quantity for products to update to PO
   def update_individual_products
+    
+    #REMOVE THE CODE BELOW
     @purchase_order = Spree::PurchaseOrder.find(params[:poid])  
       params[:purchase_order_item].each do |purchase_order_item|
 
