@@ -1,4 +1,4 @@
-<h1>Listing Products for Vendor</h1>
+<h1>Add Quantity to this Purchase Order</h1>
 <%= form_tag admin_update_individual_products_path :method => :post do %>  
 
 <table>
@@ -16,7 +16,7 @@
   <tbody>
     <% @tpois.each.with_index do |var| %>
       <tr>
-        <%= @variant = Spree::Variant.find(var.var_id) %>
+        <% @variant = Spree::Variant.find(var.var_id) %>
         <%= hidden_field_tag "poid", @purchase_order.id %>
         <%= hidden_field_tag "purchase_order_item[][purchase_order_id]", @purchase_order.id %>
         <%= hidden_field_tag "purchase_order_item[][product_id]", @variant.id %>
