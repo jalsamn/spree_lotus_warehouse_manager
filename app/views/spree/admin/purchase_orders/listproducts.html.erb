@@ -32,5 +32,7 @@
   </tbody>
 </table>
 <br>
-<%= link_to 'Submit', admin_add_individual_products_path(purchase_order_id: @purchase_order.id) %>
+<%= paginate @sorted_vars %>
+<p>
+<%= link_to 'Submit', admin_add_individual_products_path(purchase_order_id: @purchase_order.id) %></p>
 
