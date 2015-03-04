@@ -1,16 +1,4 @@
-<script>
-  function addProduct(cb, varid)
-{
-  if(cb.checked){
-    //alert("Changed, new value true and Var is " + varid);
-    <%= @var = Spree::Variant.first %>
-      alert("Changed, new value true and Var is " + <%= @var.name %>);
-  }
-  else{
-     alert("Changed, new value false");
-  }
-}
-</script>
+
 <h1>Listing Products for <%= @vendor.vendorname %></h1>
 
 <%= form_tag admin_add_individual_products_path do %>  
