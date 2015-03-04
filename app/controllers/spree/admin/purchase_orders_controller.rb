@@ -24,8 +24,8 @@ class PurchaseOrdersController < Spree::Admin::BaseController
   
   def add_individual_products_1
     @tpoi = Spree::TempPoItem.new
-    @topi.po_id = params[:po_id]
-    @topi.variant_id = params[:variant_id]
+    @tpoi.po_id = params[:po_id]
+    @tpoi.variant_id = params[:variant_id]
     
     respond_to do |format|
         if @tpoi.save
