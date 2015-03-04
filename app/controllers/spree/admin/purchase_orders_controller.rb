@@ -19,8 +19,8 @@ class PurchaseOrdersController < Spree::Admin::BaseController
   def listproducts
     @vendor = Spree::Vendor.find(params[:vendor_id]) 
     @purchase_order = Spree::PurchaseOrder.find(params[:purchase_order_id])  
-    @sorted_vars = Spree::Variant.where(vendor_id: @vendor.id).sort_by {|obj| obj.total_on_hand }
-  #  @sorted_vars = @vars.order(:total_on_hand).page params[:page]  
+    @s_vars = Spree::Variant.where(vendor_id: @vendor.id).sort_by {|obj| obj.total_on_hand }
+    @sorted_vars = @s_vars.page params[:page]  
   end
   
   def addindividualproducts
@@ -42,18 +42,13 @@ class PurchaseOrdersController < Spree::Admin::BaseController
   def add_individual_products
     
     @tpois = Spree::TempPo.where(po_id: params[:purchase_order_id])
-    
-    #Delete Code Below
     @purchase_order = Spree::PurchaseOrder.find(params[:purchase_order_id])  
-   # @vars = Spree::Variant.find(params[:var_ids])
     
-
   end
   
     #Below code is too invoke view that will ask for quantity for products to update to PO
   def update_individual_products
     
-    #REMOVE THE CODE BELOW
     @purchase_order = Spree::PurchaseOrder.find(params[:poid])  
       params[:purchase_order_item].each do |purchase_order_item|
 
