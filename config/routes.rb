@@ -2,6 +2,7 @@ Spree::Core::Engine.routes.draw do
   
   namespace :admin do
     resources :vendors
+    resources :temp_po_items
     get 'assignvendor', :to => 'vendors#assignvendor'
     get 'updatevendor', :to => 'vendors#updatevendor', :as => :update_vendor
     get 'add_individual_products_1', :to => 'purchase_orders#add_individual_products_1'
