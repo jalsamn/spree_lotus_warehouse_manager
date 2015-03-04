@@ -3,6 +3,7 @@ module Spree
 
 class PurchaseOrdersController < Spree::Admin::BaseController
   before_action :set_purchase_order, only: [:show, :edit, :update, :destroy]
+  skip_before_action :verify_authenticity_token, only: :add_individual_products_1
 
   # GET /spree/vendors
   def index
