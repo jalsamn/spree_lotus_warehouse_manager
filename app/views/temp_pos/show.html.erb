@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Po:</strong>
+  <%= @temp_po.po_id %>
+</p>
+
+<p>
+  <strong>Var:</strong>
+  <%= @temp_po.var_id %>
+</p>
+
+<%= link_to 'Edit', edit_temp_po_path(@temp_po) %> |
+<%= link_to 'Back', temp_pos_path %>

@@ -1,0 +1,25 @@
+<%= form_for(@temp_po) do |f| %>
+  <% if @temp_po.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@temp_po.errors.count, "error") %> prohibited this temp_po from being saved:</h2>
+
+      <ul>
+      <% @temp_po.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :po_id %><br>
+    <%= f.number_field :po_id %>
+  </div>
+  <div class="field">
+    <%= f.label :var_id %><br>
+    <%= f.number_field :var_id %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
