@@ -3,14 +3,6 @@ module Spree
 
 class TempPoItemsController < Spree::Admin::BaseController
   
-  def add_individual_products_1
-    @tpoi = Spree::TempPoItem.new
-    @tpoi.po_id = params[:po_id]
-    @tpoi.variant_id = params[:variant_id]
-    @tpoi.save
-    
-    
-  end
    # GET /spree/vendors/1
   def show
   end
