@@ -86,7 +86,15 @@ class PurchaseOrdersController < Spree::Admin::BaseController
   end
   
   def delete_purchase_order_item
-    @poit = Spree::PurchaseOrderItem.find(params[:po_item]).destroy
+    @poit = Spree::PurchaseOrderItem.find(params[:po_item])
+     respond_to do |format|
+        if @poit.destroy
+          format.html { redirect_to admin_display_detailed_purchase_order_path, notice: 'Updated' }
+          format.js
+        else
+            format.html { render action: "listproducts" }
+        end
+    end
   end
 
 

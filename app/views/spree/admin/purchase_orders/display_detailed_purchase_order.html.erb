@@ -22,7 +22,7 @@
         <td><%= @variant.barcode %></td>
         <td><%= purchaseorderitem.quantity %></td>
         <td><%= purchaseorderitem.quantitytype %></td>
-        <td><%= link_to 'Remove', admin_delete_purchase_order_item_path, params: { :po_item => purchaseorderitem.id }, confirm: 'Are you sure?'%></td>
+        <td id="poitem_<%= purchaseorderitem.id %>"><%= button_to 'Remove', admin_delete_purchase_order_item_path, params: { :po_item => purchaseorderitem.id }, confirm: 'Are you sure?', :method => :get, :remote => true %></td>
       </tr>
     <% end %>
   </tbody>
