@@ -9,6 +9,7 @@
       <th>Barcode</th>
       <th>Quantity</th>
       <th>QuantityType</th>
+      <th>Remove</th>
     </tr>
   </thead>
 
@@ -21,6 +22,7 @@
         <td><%= @variant.barcode %></td>
         <td><%= purchaseorderitem.quantity %></td>
         <td><%= purchaseorderitem.quantitytype %></td>
+        <td><%= link_to 'Remove', admin_delete_purchase_order_item_path, params: { :po_item => purchaseorderitem.id }, confirm: 'Are you sure?'%></td>
       </tr>
     <% end %>
   </tbody>

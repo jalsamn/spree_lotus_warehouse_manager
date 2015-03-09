@@ -84,6 +84,10 @@ class PurchaseOrdersController < Spree::Admin::BaseController
   end
     
   end
+  
+  def delete_purchase_order_item
+    @poit = Spree::PurchaseOrderItem.find(params[:po_item]).destroy
+  end
 
 
   # GET /spree/vendors/new

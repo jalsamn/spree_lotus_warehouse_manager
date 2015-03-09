@@ -12,6 +12,7 @@ Spree::Core::Engine.routes.draw do
     get 'add_individual_products', :to => 'purchase_orders#add_individual_products'
     post 'update_individual_products', :to => 'purchase_orders#update_individual_products'
     get 'display_detailed_purchase_order', :to => 'purchase_orders#display_detailed_purchase_order'
+    get 'delete_purchase_order_item', :to => 'purchase_orders#delete_purchase_order_item'
     
   end
 
