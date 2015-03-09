@@ -79,7 +79,7 @@ class PurchaseOrdersController < Spree::Admin::BaseController
       respond_to do |format|
         format.html
         format.pdf do
-          render :pdf => "PurchaseOrder"
+          render :pdf => "PurchaseOrder", :header => { :right => '[page] of [topage]' }
          end
   end
     

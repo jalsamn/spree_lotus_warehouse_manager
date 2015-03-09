@@ -4,6 +4,7 @@
   <%= stylesheet_link_tag 'application' %>
 <% end %>
 
+
 <style>
   html, body {
     width: 100%;
@@ -75,6 +76,7 @@
 <table id="top-leader" class="Table-Normal">
                 <thead>
                     <tr>
+                        <th>Line</th>
                         <th>Product</th>
                         <th>Barcode</th>
                         <th>Quantity</th>
@@ -82,9 +84,10 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <% @purchase_order_items.each do |purchaseorderitem| %>
+                  <% @purchase_order_items.each_with_index do |purchaseorderitem, index| %>
                     <tr>
                       <% @variant = Spree::Variant.find(purchaseorderitem.product_id)  %>
+                      <td><%= index + 1 %></td>
                       <td><%= @variant.name %></td>
                       <td><%= @variant.barcode %></td>
                       <td><%= purchaseorderitem.quantity %></td>
@@ -94,3 +97,4 @@
                   <% end %>
                 </tbody>
 </table>
+ran @ server:://starship::node::enterprise_j
