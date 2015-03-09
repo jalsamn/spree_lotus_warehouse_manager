@@ -15,14 +15,14 @@
 
   <tbody>
     <% @purchase_order_items.each_with_index do |purchaseorderitem, index| %>
-      <tr id="poitem_<%= purchaseorderitem.id %>">
+      <tr>
         <% @variant = Spree::Variant.find(purchaseorderitem.product_id)  %>
         <td><%= index + 1 %></td>
         <td><%= @variant.name %></td>
         <td><%= @variant.barcode %></td>
         <td><%= purchaseorderitem.quantity %></td>
         <td><%= purchaseorderitem.quantitytype %></td>
-        <td><%= button_to 'Remove', admin_delete_purchase_order_item_path, params: { :po_item => purchaseorderitem.id }, confirm: 'Are you sure?', :method => :get, :remote => true %></td>
+        <td id="poitem_<%= purchaseorderitem.id %>"><%= button_to 'Remove', admin_delete_purchase_order_item_path, params: { :po_item => purchaseorderitem.id }, confirm: 'Are you sure?', :method => :get, :remote => true %></td>
       </tr>
     <% end %>
   </tbody>
