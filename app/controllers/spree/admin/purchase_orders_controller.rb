@@ -20,7 +20,7 @@ class PurchaseOrdersController < Spree::Admin::BaseController
     @vendor = Spree::Vendor.find(params[:vendor_id]) 
     @purchase_order = Spree::PurchaseOrder.find(params[:purchase_order_id])  
     @s_vars = Spree::Variant.where(vendor_id: @vendor.id).sort_by {|obj| obj.total_on_hand }
-    @sorted_vars = Kaminari.paginate_array(@s_vars).page(params[:page]).per(25)
+    @sorted_vars = Kaminari.paginate_array(@s_vars).page(params[:page]).per(50)
   end
   
   def addindividualproducts
